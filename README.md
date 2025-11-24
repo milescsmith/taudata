@@ -1,15 +1,17 @@
-# tau
+# taudata
 
-An annotated data object format for Olink data
+An annotated data object format for Olink data.
+
+Very, *very* alpha at the moment.
 
 ## Installation
 
 ### From PyPI (when published)
 
 ```bash
-pip install tau
+pip install taudata
 # or with uv
-uv add tau
+uv add taudata
 ```
 
 ### Development Installation
@@ -36,14 +38,16 @@ uv add tau
 
 ## Usage
 
+Only one function at the moment: `read_processed_olink_parquet`
+
 ### Python API
 
 ```python
-from tau import core
+from taudata.io import read_processed_olink_parquet
 
 # Example usage
-result = core.main_function()
-print(result)
+adata = read_processed_olink_parquet(file="existing.parquet", X_col="ExtNPX", sampleid_col="sample_name",)
+print(adata)
 ```
 
 
@@ -54,69 +58,19 @@ This project uses modern Python development tools and practices:
 - **Package Management**: [uv](https://github.com/astral-sh/uv) for fast dependency management
 - **Testing**: [pytest](https://pytest.org/) with coverage reporting
 - **Linting**: [Ruff](https://github.com/astral-sh/ruff) for fast Python linting
-- **Type Checking**: [Pyright](https://github.com/microsoft/pyright) for static type analysis
-- **Task Automation**: [duty](https://github.com/pawamoy/duty) for development tasks
+- **Type Checking**: [ty](https://docs.astral.sh/ty/) for static type analysis
 - **Documentation**: [MkDocs](https://www.mkdocs.org/) with Material theme
-
-### Available Tasks
-
-Run development tasks using `duty`:
-
-```bash
-# Run tests
-duty test
-
-# Run linting and formatting
-duty lint
-
-# Build documentation
-duty docs
-
-# Build package
-duty build
-
-# Run all quality checks
-duty check
-
-# Set up development environment
-duty setup
-```
-
-### Testing
-
-```bash
-# Run all tests
-pytest
-
-# Run tests with coverage
-pytest --cov
-
-# Run tests in parallel
-pytest -n auto
-```
-
-### Code Quality
-
-```bash
-# Format code
-ruff format .
-
-# Lint code
-ruff check .
-
-# Type checking
-# Type checking not configured
 ```
 
 ## Project Structure
 
 ```
 tau/
-├── src/tau/     # Source code
-├── tests/                      # Test suite
-├── docs/                       # Documentation
-├── scripts/                    # Utility scripts
-└── pyproject.toml             # Project configuration
+├── src/taudata/   # Source code
+├── tests/         # Test suite
+├── docs/          # Documentation
+├── scripts/       # Utility scripts
+└── pyproject.toml # Project configuration
 ```
 
 ## Contributing
@@ -146,9 +100,7 @@ See [CHANGELOG.md](CHANGELOG.md) for a history of changes to this project.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/milescsmith/tau/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/milescsmith/tau/discussions)
+- **Issues**: [GitHub Issues](https://github.com/milescsmith/taudata/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/milescsmith/taudata/discussions)
 
 ---
-
-Generated with ❤️ using the [Python Utility Template](https://github.com/rnwolf/copier-py-uv)
