@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "taudata"
+version = "0.1.0"
+description = "An annotated data object format for Olink data"
+readme = "README.md"
+license = {file = "LICENSE.md"}
+requires-python = ">=3.12"
+authors = [
+    {name = "Miles Smith", email = "miles-smith@omrf.org"},
+]
+keywords = ["utility", "tool", "Bio-Informatics"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    
+]
+dependencies = [
+    "anndata>=0.12.6",
+    "loguru>=0.7.0", # for logging
+    "polars>=1.35.2",
+    "pydantic>=2.12.4",
+    "semver>=3.0.4",
+]
+    
+[dependency-groups]
+dev = [
+    "ty>=0.0.1a27",
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-xdist>=3.0",  # parallel testing
+    "ruff>=0.1.0",
+    "duty>=1.4.0",  # task runner
+]
+docs = [
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.0",
+    "mkdocstrings[python]>=0.20",
+    "mkdocs-gen-files>=0.5",
+    "mkdocs-literate-nav>=0.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/milescsmith/tau"
+Repository = "https://github.com/milescsmith/tau"
+Issues = "https://github.com/milescsmith/tau/issues"
+
+
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = [
+    "--cov=src/tau",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-fail-under=80",
+    "--strict-markers",
+    "--disable-warnings",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]

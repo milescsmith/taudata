@@ -1,0 +1,21 @@
+# GitHub Actions CI/CD
+
+name: CI
+
+# GitHub Actions workflow is not enabled for this project.
+# To enable CI/CD, set include_github_actions=true in your copier configuration.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Placeholder job
+      run: |
+        echo "GitHub Actions CI/CD is not enabled for this project"
+        echo "To enable, set include_github_actions=true in your copier configuration"
